@@ -1,0 +1,86 @@
+<div class="parent">
+  <div class="container">
+    <nav class="navbar static-top">
+      <a>
+        <img class="back" src="../../assets/images/prev.svg" width="20" (click)="goBack()" />
+      </a>
+      <a>
+        <img class="check" *ngIf="isEdit&&!readonly" src="../../assets/images/check.svg" width="20" (click)="save()" />
+        <img class="check" *ngIf="!isEdit" src="../../assets/images/check.svg" width="20" (click)="create()" />
+      </a>
+      <div class="nav   mx-auto">
+        <a class="navbar-text text-center">{{name}}</a>
+
+      </div>
+      <div class="nav  pull-sm-right">
+
+
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown">
+            <img src="../../assets/images/sandwich.png" width="20" />
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" *ngIf="isAdmin" (click)="newUser()">
+              <img src="../../assets/images/userNameIcon.svg" width="20" /> Add a new user
+            </li>
+            <li class="dropdown-item" (click)="accountInfo()">
+              <img src="../../assets/images/user.svg" width="20" /> Account details
+            </li>
+            <li class="dropdown-item" (click)="logout()">
+              <img src="../../assets/images/logout.svg" width="20" /> Logout
+            </li>
+          </ul>
+        </li>
+      </div>
+    </nav>
+    <div *ngIf="user">
+      <ul class="list-group">
+
+        <li class="list-group-item" style="background: white">
+          <form class="form-inline">
+            <img class="pull-left" src="../../assets/images/userNameIcon.svg" width="30" />
+            <input class="form-control" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}" placeholder="Enter username" *ngIf="readonly"
+              readonly>
+            <input class="form-control" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}" placeholder="Enter username" *ngIf="!readonly">
+          </form>
+        </li>
+        <li class="list-group-item" style="background: rgb(204, 204, 204)">
+          <form class="form-inline">
+            <img class="pull-left" src="../../assets/images/password.png" width="30" />
+            <input class="form-control" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" placeholder="Enter password"
+              *ngIf="readonly" readonly>
+            <input class="form-control" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" placeholder="Enter password"
+              *ngIf="!readonly">
+          </form>
+        </li>
+        <li class="list-group-item" style="background: white">
+          <form class="form-inline">
+            <img class="pull-left" src="../../assets/images/roles.png" width="30" />
+
+            <select [(ngModel)]="role" [ngModelOptions]="{standalone: true}" class="form-control" *ngIf="!readonly&&isAdmin">
+              <option>Admin</option>
+              <option>Curator</option>
+              <option>FT</option>
+            </select>
+            <input class="form-control" [(ngModel)]="role" [ngModelOptions]="{standalone: true}" *ngIf="readonly||!isAdmin" readonly>
+          </form>
+
+        </li>
+        <li class="list-group-item" *ngIf="role=='FT'&&isAdmin" style="background: rgb(204, 204, 204)">
+          <form class="form-inline">
+            <img class="pull-left" src="../../assets/images/curingStation.svg" width="30" />
+            <select [(ngModel)]="user.curatorName" [ngModelOptions]="{standalone: true}" class="form-control">
+              <option *ngFor="let curator of curators" [value]="curator.name">{{curator.name}}</option>
+            </select>
+          </form>
+        </li>
+        <li class="list-group-item" style="background: white" *ngIf="user.URL||!readonly">
+          <div class="form-group">
+            <img class="imageToShow" id="img" [src]="user.URL" *ngIf="user.URL">
+            <input *ngIf="!readonly" type="file" (change)="onFileChange($event.target.files[0])" #fileInput>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

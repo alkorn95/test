@@ -1,0 +1,66 @@
+.parent {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+    background: rgb(240, 168, 35);
+    overflow-y: auto;
+    
+}
+
+.dropdown-item{
+    cursor: pointer;
+}
+.dropdown-item:hover{
+    background: rgb(204, 204, 204);
+}
+.dropdown-menu {
+    float: right !important;
+    right: 0;
+    left: auto;
+  }
+
+.pull-right{
+    padding-top: 8px;
+}
+
+.username{
+    font-size: 22px;
+    color: black;
+}
+
+.listUsers{
+    padding-top: 0px;
+}
+.container{
+    max-width: 500px;    
+    max-height: 100%;
+    
+}
+.pull-right{
+    cursor: pointer;
+}
+
+.navbar{
+    background: rgb(204, 204, 204);
+    font-size: 24px;
+    
+}
+.navbar-text{
+    background: rgb(240, 168, 35);
+    min-width: 200px;
+    border-radius: 15px;
+}
+
+.nav-item{
+    cursor: pointer;
+}
+
+.list-group-item{
+    border-radius: 0;
+    border-width: 0px;
+}

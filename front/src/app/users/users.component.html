@@ -1,0 +1,43 @@
+<div class="parent">
+    <div class="container">
+        <nav class="navbar static-top">
+            <div class="nav   mx-auto">
+                <a class="navbar-text text-center">{{name}}</a>
+            </div>
+            <div class="nav  pull-sm-right">
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown">
+                        <img src="../../assets/images/sandwich.png" width="20" />
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item" *ngIf="isAdmin" (click)="newUser()">
+                            <img src="../../assets/images/userNameIcon.svg" width="20" /> Add a new user
+                        </li>
+                        <li class="dropdown-item" (click)="accountInfo()">
+                            <img src="../../assets/images/user.svg" width="20" /> Account details
+                        </li>
+                        <li class="dropdown-item" (click)="logout()">
+                            <img src="../../assets/images/logout.svg" width="20" /> Logout
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </nav>
+        <ul class="list-group" *ngFor="let user of users; let i=index">
+            <li class="list-group-item" *ngIf="i%2==0" style="background: white">
+                <img class="rounded-circle" [src]="user.URL" *ngIf="user.URL" width="32">
+                <img src="../../assets/images/user.svg" *ngIf="!user.URL" width="32">
+                <label class="text">#{{i+1}}</label>
+                <a routerLink="/personal" class="username" (click)="Select(user._id)"> {{user.name}}</a>
+                <img class="pull-right" *ngIf="isAdmin" (click)="deleteUser(user._id)" src="../../assets/images/Delete.png" width="20" />
+            </li>
+            <li class="list-group-item" *ngIf="i%2==1" style="background: rgb(204, 204, 204)">
+                <img class="rounded-circle" [src]="user.URL" *ngIf="user.URL" width="32">
+                <img src="../../assets/images/user.svg" *ngIf="!user.URL" width="32">
+                <label class="text">#{{i+1}}</label>
+                <a routerLink="/personal" class="username" (click)="Select(user._id)"> {{user.name}}</a>
+                <img class="pull-right" *ngIf="isAdmin" (click)="deleteUser(user._id)" src="../../assets/images/Delete.png" width="20" />
+            </li>
+        </ul>
+    </div>
+</div>

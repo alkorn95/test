@@ -1,0 +1,25 @@
+<div class="parent">
+  <div class="container text-center">
+    <img src="../../assets/images/thapawong_2.png" width="150" />
+    <p></p>
+    <div class="form-group">
+      <label class="text">Login</label>
+      <div class="inner-addon left-addon">
+        <i class="fa fa-play"></i>
+        <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter username">
+      </div>
+      <div class="inner-addon left-addon">
+        <i class="fa fa-play"></i>
+        <input type="password" class="form-control" [(ngModel)]="password" placeholder="Enter password">
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-default" (click)="login()">
+        <img src="../../assets/images/arrowWhite.svg" width="50" />
+      </button>
+    </div>
+    <p></p>
+    <a class="link" (click)="register()">Register</a>
+  </div>
+
+</div>
